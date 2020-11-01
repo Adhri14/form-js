@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <title>Form for Javascript</title>
+</head>
+
+<body>
+    <form action="" class="login-form">
+        <h1>Sign Up</h1>
+        <div class="txtb">
+            <input type="text" required id="username" autocomplete="off">
+            <label for="username" class="placeholder">Username</label>
+        </div>
+        <div class="txtb">
+            <input type="password" required id="password">
+            <label for="password" class="placeholder">Password</label>
+            <div class="show-password fas fa-eye-slash"></div>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox">
+            <div class="fas fa-check"></div>
+            Stay sign in
+        </div>
+        <button type="submit" class="btn fas fa-arrow-right" disabled></button>
+        <a href="#">Can't sign in</a>
+        <a href="#">Create Account</a>
+    </form>
+
+    <script>
+        const txtb = document.querySelectorAll('.txtb input');
+        const btn = document.querySelector('.btn');
+
+        function check() {
+            if (txtb[0].value != "" && txtb[1].value != "") 
+                btn.disabled = false;
+            else 
+                btn.disabled = true;
+            
+        }
+
+        txtb[0].addEventListener('keyup', check);
+        txtb[1].addEventListener('keyup', check);
+
+        document.querySelector('.show-password').addEventListener('click', function () {
+            if (this.classList[2] == 'fa-eye-slash') {
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+                txtb[1].type = 'text';
+            } else {
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+                txtb[1].type = 'password';
+            }
+        });
+    </script>
+</body>
+
+</html>
